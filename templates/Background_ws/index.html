@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="../../static/Background_ws/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/Background_ws/bg.css">
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="index.html">控制台</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    管理员
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="../Official_ws/login.html">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">成员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="#">学生信息管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">班级管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="../cls_table/" target="blank">课程表管理</a></dd>
+                        <dd><a href="photo.html" target="blank">班级相册管理</a></dd>
+                        <dd><a href="cla_info.html" target="blank">班级公告管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="stu_info.html" target="blank">设置</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <br>
+            <div style="background-color: #009688;height: 60px;text-align: center;">
+                <i class="layui-icon" style="font-size: 40px; color: black;">&#xe716;学生信息管理控制台</i>
+            </div>
+
+
+            <div class="layui-bg-gray" style="padding: 30px;">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md4">
+                        <div class="layui-panel">
+                            <div style="padding: 50px 30px;height: 100px; ">
+                                <p style="color: black;font-size: 15px;margin-top: -30px;">用户数</p>
+                                <p style="font-size: 40px;margin-top: 70px;">34</p>
+                                <p style="font-size: 15px; color: black; margin-top: 10px;">总用户数:34人</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-panel">
+                            <div style="padding: 50px 30px; height: 100px;">
+                                <p style="color: black;font-size: 15px;margin-top: -30px;">照片数</p>
+                                <p style="font-size: 40px;margin-top: 70px;">20</p>
+                                <p style="font-size: 15px; color: black; margin-top: 10px;">总照片数:20人</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="layui-panel">
+                            <div style="padding: 50px 30px;height: 100px;">
+                                <p style="color: black;font-size: 15px;margin-top: -30px;">留言数</p>
+                                <p style="font-size: 40px;margin-top: 70px;">1</p>
+                                <p style="font-size: 15px; color: black; margin-top: 10px;">总照片数:人</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stu">
+                <a class="stu_ifo" href="#">学生信息上传 :</a>
+                <button type="button" class="stu_bnt">&nbsp;&nbsp;点击上传&nbsp;&nbsp;</button>
+                <a class="stu_install" href="#">学生信息下载</a>
+            </div>
+
+            <!-- 内容主体区域 -->
+
+            <div style="padding:0 20px;">
+                <table class="layui-hide" id="level_manage" lay-filter="level_manage"></table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../../static/Background_ws/js/jquery-1.9.1.min.js"></script>
+<script src="../../static/Background_ws/layui/layui.js"></script>
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        $('#rm').click(function () {
+            table.reload('level_manage')
+        })
+        table.render({
+            elem: '#level_manage'
+            , skin: 'nob'
+            , even: true //开启隔行背景
+
+            , url: '../level_manage_data/'
+            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '搜索'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-search'
+            }]
+            , title: '用户数据表'
+
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {
+                    field: 'id',
+                    title: 'ID',
+                    width: 80,
+                    fixed: 'left',
+                    unresize: true,
+                    sort: true,
+                    templet: '#id'
+                }
+                , {field: 'name', title: '用户名', width: 120, edit: 'text'}
+                , {field: 'password', title: '密码', width: 120, edit: 'text'}
+                , {
+                    field: 'email', title: '邮箱', width: 250, edit: 'text', templet: function (res) {
+                        return '<em>' + res.email + '</em>'
+                    }
+                }
+                , {field: 'code', title: '动态验证码', width: 120, edit: 'text'}
+                , {field: 'age', title: '年龄', width: 80, sort: true, edit: 'text'}
+                , {field: 'level', title: '等级', width: 100, sort: true, edit: 'text'}
+                , {field: 'original_id', title: '原始ID', width: 260,}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center', width: 302,}
+
+            ]]
+            , page: true
+        });
+
+        //头工具栏事件(添加新成员)
+        table.on('toolbar(level_manage)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'addUser':
+                    $.ajax({
+                        type: 'get',
+                        url: '../level_manage_data_add/',
+                        data: {
+                            'add_by': '{{ request.session.username }}'
+                        },
+                        success: function (data) {
+                            layer.msg(data['msg'])
+                        }
+                    });
+                    table.reload('level_manage')
+                    break;
+
+                case 'delUser':
+                    var data = checkStatus.data;
+                    chose_data = JSON.stringify(data)
+
+                    layer.confirm('此操作为批量操作，请谨慎使用！', function (index) {
+                        $.ajax({
+                            type: 'get',
+                            url: '../level_manage_data_del/',
+                            data: {
+                                'chose_data': chose_data,
+                                'del_by': '{{ request.session.username }}'
+                            },
+                            async: false,
+                            success: function (data) {
+                                layer.msg(data['msg'])
+                                layer.close(index)
+                                table.reload('level_manage')
+                            }
+                        });
+                    })
+                {
+                    // table.reload('level_manage')
+
+                }
+                    break;
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+
+                    layer.open({
+                        type: 4,
+                        content: ['搜索', '#id'] //数组第二项即吸附元素选择器或者DOM
+                    });
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(level_manage)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('确定删除此条数据吗？', function (index) {
+                    $.ajax({
+                        type: 'get',
+                        url: '../level_manage_data_delete/',
+                        data: {
+                            'is_delete': 0,
+                            'original_id': data.original_id,
+                            'del_by': '{{ request.session.username }}'
+                        },
+                        success: function (data) {
+                            layer.msg(data['msg']);
+                            {
+                                // obj.del();
+
+                            }
+                            layer.close(index);
+                            table.reload('level_manage')
+                        }
+                    });
+                });
+            } else if (obj.event === 'save') {
+                $.ajax({
+                    type: 'get',
+                    url: '../level_manage_data_save/',
+                    data: {
+                        'name': data.name,
+                        'email': data.email,
+                        'code': data.code,
+                        'age': data.age,
+                        'password': md5(data.password),
+                        'level': data.level,
+                        'original_id': data.original_id,
+                        'save_by': '{{ request.session.username }}'
+                    },
+                    success: function (data) {
+                        layer.msg(data['msg'])
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stu_info</title>
+    <link rel="stylesheet" href="../../static/Background_ws/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/Background_ws/bg.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="index.html">控制台</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    管理员
+                </a>
+            </li>
+            <li class="layui-nav-item"><a href="../Official_ws/login.html">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">成员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="index.html" target="blank">学生信息管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">班级管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="cls_table.html" target="blank">课程表管理</a></dd>
+                        <dd><a href="photo.html" target="blank">班级相册管理</a></dd>
+                         <dd><a href="cla_info.html" target="blank">班级公告管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="stu_info.html" target="blank">设置</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <br>
+            <div style="background-color: #009688;height: 60px;text-align: center;">
+                <i class="layui-icon" style="font-size: 40px; color: black;">&#xe716;管理员信息管理控制台</i>
+            </div>
+
+        </div>
+        <div id="self_info_body" class="layui-body ">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+
+                <div class="layui-row">
+                    <div class="layui-col-xs6">
+                        <div class="grid-demo grid-demo-bg1" style="height: 500px;margin-left: -150px; margin-right:-80px;padding: 20px">
+
+                            <blockquote class="layui-elem-quote" style="background: rgba(0,0,0,0.5);margin-top:15px;color: white">
+                                资料完善进度
+                            </blockquote>
+
+                            <div class="layui-progress" style="background: rgba(0,0,0,0.5);">
+                                <div class="layui-progress-bar layui-bg-orange" lay-percent="40%"></div>
+                            </div>
+
+                            <blockquote class="layui-elem-quote "
+                                        style="margin-top: 20px;background: rgba(0,0,0,0.5);color: white">
+                                基本信息
+                            </blockquote>
+
+                            <div class="layui-card" style="margin-top: 10px;background: rgba(0,0,0,0.5);color: white">
+                                <span style="color: orange">(注:*为必填不可修改内容)</span>
+                                <div class="layui-card-body">
+                                    <form class="layui-form" action="">
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label"><span
+                                                        style="color: red;">*&nbsp;</span>用户名</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_center_userId" type="text" name="userId"
+                                                           lay-verify="required|phone"
+                                                           autocomplete="off" class="layui-input" readonly="readonly"
+                                                           value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">姓名</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_center_username" type="text" name="username"
+                                                           lay-verify="email" autocomplete="off"
+                                                           class="layui-input" readonly=true value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label"><span
+                                                        style="color: red">*&nbsp;</span>权限</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_center_level" type="tel" name="level"
+                                                           lay-verify="required"
+                                                           autocomplete="off" class="layui-input" readonly="readonly"
+                                                           value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">年龄</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_center_age" type="text" name="age"
+                                                           lay-verify="email"
+                                                           autocomplete="off"
+                                                           class="layui-input" readonly=true value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label"><span
+                                                        style="color: red">*&nbsp;</span>原始ID</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_original_id" type="tel" name="original_id"
+                                                           lay-verify="required"
+                                                           autocomplete="off" class="layui-input" readonly="readonly"
+                                                           value="">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label">密码</label>
+                                                <div class="layui-input-inline">
+                                                    <input id="self_password" type="password" name="age"
+                                                           lay-verify="required"
+                                                           autocomplete="off"
+                                                           class="layui-input" readonly=true value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item" style="text-align: center!important;">
+                                            <input id="self_center_update" type="button" class="layui-btn" value="修改">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+<!--                    <div class="layui-col-xs6">-->
+<!--                        <div class="grid-demo" style="height: 500px;padding: 20px">-->
+<!--                            <div>兴趣爱好</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../../static/Background_ws/js/jquery-1.9.1.min.js"></script>
+<script src="../../static/Background_ws/layui/layui.js"></script>
+{#===================个人信息js=======================#}
+<script>
+    $('#self_center_update').click(function () {
+        var object = $('#self_center_update')
+        if (object.val() == '修改') {
+            object.val('保存')
+            $('#self_center_username').attr('readonly', false)
+            $('#self_center_age').attr('readonly', false)
+            $('#self_password').attr('readonly', false)
+            $('#self_center_userId').attr('disabled', true).css('background-color', '#cccccc')
+            $('#self_center_level').attr('disabled', true).css('background-color', '#cccccc')
+            $('#self_original_id').attr('disabled', true).css('background-color', '#cccccc')
+            var Value = $('#self_center_username').val()
+            $('#self_center_username').val('').focus().val(Value)
+        } else {
+            object.val('修改')
+            $('#self_center_username').attr('readonly', true)
+            $('#self_center_age').attr('readonly', true)
+            $('#self_password').attr('readonly', true)
+            $('#self_center_userId').attr('disabled', false).css('background-color', '')
+            $('#self_center_level').attr('disabled', false).css('background-color', '')
+            $('#self_original_id').attr('disabled', false).css('background-color', '')
+            {#alert(md5($('#self_password').val()))#}
+            $.ajax({
+                type: 'get',
+                url: '../self_center_update/',
+                data: {
+                    'userId': $('#self_center_userId').val(),
+                    'username': $('#self_center_username').val(),
+                    'age': $('#self_center_age').val(),
+                    'password': md5($('#self_password').val()),
+                },
+                success: function (data) {
+                    $('#span_username').html('')
+                    $('#span_username_js').html('欢迎登陆！' + data['username'])
+                    layer.msg(data['msg'])
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>
